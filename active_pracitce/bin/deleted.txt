@@ -1,0 +1,179 @@
+        // Write a Java program to convert temperature from Fahrenheit to Celsius degrees. Go to the editor
+        // Test Data
+        // Input a degree in Fahrenheit: 212
+        // Expected Output:
+        // 212.0 degree Fahrenheit is equal to 100.0 in Celsius
+        
+        // Scanner input = new Scanner(System.in);
+        // System.out.println("Input a degree in Fahrenheit");
+        // float celcius = input.nextFloat();
+
+        // System.out.println((celcius * 9/5) + 32);
+
+        // Write a Java program to compare two signed and unsigned numbers. Go to the editor
+        // Scanner input = new Scanner(System.in);
+        // System.out.println("Enter your signed or unsigned number");
+        // long n = input.nextLong();
+        // if (Math.abs(n) == n) {
+        //     System.out.println("Is an unsigned number");
+        // }
+        // else{
+        //     System.out.println("Is a signed number");
+        // }
+
+        // int x = 8;
+        // int y = 9;
+
+        // System.out.println(Integer.compare(x,y));
+
+        
+        // Write a Java program that reads a number and displays the square, cube, and fourth power.
+        // Scanner input = new Scanner(System.in);
+        // System.out.println("Enter your number: ");
+        // float n = input.nextFloat();
+
+        // System.out.println("Square of your number: " + Math.pow(n,2));
+        // System.out.println("Your number to third power: " + Math.pow(n,3));
+        // System.out.println("Your number to fourth power: " + Math.pow(n,4));
+
+        
+        // Write a Java program that creates an array of 5 integers and 
+        // initializes them to some values. 
+        // Then, create a method called "multiplyArray" that takes an array 
+        // of integers as a parameter and multiplies each element in the array
+        // by 2. Finally, print the original array and the modified array.
+
+            
+        static void multiplyArray(double [] array){
+                double[] array_modified = new double[5];
+                for (int i = 0; i < array.length; i++){
+                array_modified[i] = Math.pow(array[i], 2);
+                }
+
+                System.out.println(Arrays.toString(array_modified) + Arrays.toString(array));
+
+        }
+
+        double[] array = new double[5];
+        for (int i= 0; i < array.length; i++){
+            array[i] = i + 1;
+        }
+
+        multiplyArray(array);
+
+
+
+            // Create a program that allows the user to enter a list of names and 
+    // their corresponding ages. The program should store the names 
+    // and ages in separate arrays and display them in alphabetical order by name.
+    
+    Scanner input = new Scanner(System.in);
+    System.out.println("Enter the number of names: ");
+    int n = input.nextInt();
+    String[] names_array = new String[n];
+    int[] ages_array = new int[n];
+    for (int i=0; i < n; i++){
+        Scanner name_input = new Scanner(System.in);
+        int p = i+1;
+        System.out.println("Enter name #" + p);
+        Scanner age_input = new Scanner(System.in);
+        System.out.println("Enter age #" + p);
+        names_array[i] = name_input.nextLine();
+        ages_array[i] = age_input.nextInt();
+    }
+    String[] names_array_sorted = Arrays.copyOf(names_array, names_array.length);
+    Arrays.sort(names_array_sorted); 
+    int[] ages_array_sorted = new int[n];
+    for (int i=0; i < n; i++){
+        int name_index = Arrays.asList(names_array).indexOf(names_array_sorted[i]);
+        ages_array_sorted[i] = ages_array[name_index];
+    }
+
+    System.out.println("Name   Age");
+    System.out.println("-----------");
+    for (int i=0; i < n; i++){
+        System.out.println(names_array_sorted[i] + " " +  ages_array_sorted[i]);
+    }
+
+    // Create a program that allows the user to enter
+    // a list of numbers and calculates their average. 
+    // The program should store the numbers in an array
+    // and use a separate method to calculate the average.
+
+    Scanner n_input = new Scanner(System.in);
+    System.out.println("Enter the number of values: ");
+    int n = n_input.nextInt();
+    float[] values = new float[n];
+    for (int i=0; i < n; i++){
+        int q = i + 1;
+        Scanner value_input = new Scanner(System.in);
+        System.out.println("Enter the value #" + q + ":");
+        values[i] = value_input.nextFloat();
+    }
+
+    float sum = 0;
+    for (int j=0; j < n; j++){
+        sum = sum + values[j];
+    }
+
+    float average = sum/n; 
+    System.out.println("The average is: " + average);
+
+            /* Write a Java program to create a new string after removing a 
+        specified character from a given string. This is except the first and last position.
+        
+        The given string is: zebrazone
+        The new string is: zebraone*/
+
+        String word = "victorino";
+        String character = "o";
+
+        System.out.println("Original word: " + word);
+        String substring_word = word.substring(1, word.length() - 1).replace(character, "");
+        System.out.println("Modified word: " + word.substring(0, 1) + substring_word + word.substring(word.length() - 1, word.length()));
+
+        /* Write a Java program to read a string and remove 
+        the first two characters if one or both are equal
+        to a specified character, otherwise leave them unchanged. */
+        String string = "epson";
+        String char_to_replace = "o";
+        String beginning = string.substring(0, 3);
+        String end = string.substring(3, string.length());
+        beginning = beginning.replace(char_to_replace, "");
+        System.out.println(beginning + end);
+
+
+                /* Write a Java program that takes a user input string and checks if 
+        it starts with the word "Hello" (case-insensitive). If it does, 
+        it should print "Greetings!", otherwise, it should print "Goodbye!".
+
+        Here are the steps you can follow to solve this problem using the methods you mentioned:
+
+        Prompt the user to enter a string using the Scanner class.
+        Use the .trim() method to remove any leading or trailing whitespace from the user input string.
+        Use the .toLowerCase() method to convert the user input string to lowercase.
+        Use the .startsWith() method to check if the lowercase user input string starts with the word "hello".
+        If the .startsWith() method returns true, use the .toUpperCase() method to convert the string "Greetings!" to uppercase and print it to the console.
+        If the .startsWith() method returns false, use the .toLowerCase() method to convert the string "Goodbye!" to lowercase and print it to the console. */
+
+        Scanner input = new Scanner(System.in);
+        String text = input.nextLine().trim().toLowerCase();
+        if (text.startsWith("hello")){
+            System.out.println("Greetings!".toUpperCase());
+        } else{
+            System.out.println("Goodbye!".toLowerCase());
+        }
+
+        // Write a Java program to check whether the first two characters appear at the end of a given string
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter your word: ");
+        String text = input.nextLine().toLowerCase().trim();
+        int truth_value = text.substring(0, 3).compareTo(text.substring(text.length()-2, text.length()));
+        boolean result;
+        if (truth_value == 1){
+            result = true;
+        } else{
+            result = false;
+        }
+        System.out.println("The first two characters appear at the end of " 
+        + text + ": " + result);
