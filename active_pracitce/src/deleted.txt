@@ -177,3 +177,264 @@
         }
         System.out.println("The first two characters appear at the end of " 
         + text + ": " + result);
+    
+        /*
+     * Write a program that outputs a pattern of a 
+     * pyramid made of asterisks (*). The user should 
+     * input the number of rows in the pyramid.
+     */
+
+    /*For example, if the user inputs 5, the output should look like this */
+    /* 
+
+    *
+   ***
+  *****
+ *******
+*********
+
+     */
+
+    Scanner input = new Scanner(System.in);
+    System.out.println("Enter the number of rows: ");
+    int n = input.nextInt();
+    for (int i = n; i > 0; i--){
+        System.out.println(" ".repeat(i-1) + "*".repeat(n-i+1) + "*".repeat(n-i));
+    }
+
+    // Write a program that prints the following text using escape sequences:
+    /*     My favorite quote is:
+    "Be the change you wish to see in the world."
+                                - Mahatma Gandhi */
+    System.out.println("My favorite quote is \n \"Be the change you wish to see in the world.\" \n \t\t\t   - Mahatma Gandhi");
+
+        /* Write a program that prompts the user to enter 
+        their name and age, and then prints a 
+        personalized greeting that includes their name and age. 
+        
+        Hello, <name>!
+        I see you are <age> years old.
+
+        */
+        Scanner name_input = new Scanner(System.in);
+        System.out.println("Enter your name: ");
+        String name = name_input.nextLine();
+        Scanner age_input = new Scanner(System.in);
+        System.out.println("Enter your age: ");
+        int age = age_input.nextInt();
+
+        System.out.println("Hello, " + name + "!\n" + "I see you are " + age + " age years old.");
+
+        /* 
+        Write a Java program to check if the sum of all the 10's in the array 
+        is exactly 30. Return false if the condition does not satisfy, otherwise true.  */
+        int[] array = {10,10,10,131,124};
+        int sum = 0;
+        for (int i=0; i < array.length; i++){
+            if (array[i] == 10){
+                sum = sum + array[i];
+            }
+        }
+        System.out.println(sum==30);
+
+        /* Write a Java program that creates an array of integers of size n
+        (where n is an even number), initializes the array with random 
+        integers between 1 and 100 (inclusive), and then splits the array
+        into two sub-arrays of equal size. The program should then sort the
+        sub-arrays in ascending order, and finally
+        merge the two sub-arrays into a single array in ascending order. */
+        int n = 10;
+        int[] random_array = new int[n];
+        for (int i=0; i < n; i++){
+            random_array[i] = 1 + (int)(Math.random() * ((100 - 1) + 1));
+        }
+
+        System.out.println(Arrays.toString(random_array));
+
+        int[] array_01 = Arrays.copyOfRange(random_array, 0, n/2);
+        int[] array_02 =  Arrays.copyOfRange(random_array, n/2, n);
+
+        Arrays.sort(array_01);
+        Arrays.sort(array_02);
+
+        System.out.println(Arrays.toString(array_01));
+        System.out.println(Arrays.toString(array_02));
+
+        int a01_len = array_01.length;
+        int a02_len = array_02.length;
+
+        int[] array_sorted = new int[a01_len + a02_len];
+        System.arraycopy(array_01, 0, array_sorted, 0, a01_len);
+        System.arraycopy(array_02, 0, array_sorted, a01_len, a02_len);
+
+        Arrays.sort(array_sorted);
+        System.out.println(Arrays.toString(array_sorted));
+
+/* Write a Java program that creates an array of integers
+        of size n, initializes the array with random integers 
+        between 1 and 100 (inclusive), and then finds the 
+        second largest element in the array. */
+        int n = 10;
+        int[] random_array = new int[n];
+        
+        for (int i=0; i < n; i++){
+            random_array[i] = 1 + (int)(Math.random() * ((100 - 1) + 1));
+        }
+        
+        System.out.println(Arrays.toString(random_array));
+        Arrays.sort(random_array);
+        System.out.println(random_array[n-2]);
+
+    // Given a 2D array of integers, find the sum of all the elements in the array.
+    int[][] array = {{1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}};
+
+    int sum = 0;
+    for (int i=0; i < array.length; i++){
+        for (int j=0; j < array[0].length; j++){
+            sum = sum + array[i][j];
+        }
+    }
+    System.out.println("The sum of all elements in the array is: " + sum);
+
+ /* Write a program that creates a 2D array of integers with dimensions 4x4. The program should then fill
+        the array with random integers between 1 and 10 (inclusive). 
+        Finally, the program should print out the array in a matrix format. */
+        int[][] array = new int[4][4];
+        for (int i=0; i < array.length; i++){
+            for (int j=0; j < array[0].length; j++){
+                array[i][j] = 1 + (int)(Math.random() * ((10-1)+1));
+            }
+        }
+        
+        for (int i=0; i < array.length; i++){
+            for (int j=0; j < array[0].length; j++){
+                System.out.print(array[i][j] + "\t");
+            }
+            System.out.println("");
+        }
+
+/* Write a program that creates a 2D array of integers with dimensions 5x5. 
+        The program should then prompt the user to enter 5 integers, one at a time, 
+        to fill the first row of the array. The program should then fill the remaining 
+        rows of the array with random integers between 1 and 10 (inclusive), but each 
+        integer in a row should be greater than or equal to the integer 
+        in the same column of the previous row. Finally, the program should print out the array in a matrix format. */
+
+        int[][] array = new int[5][5];
+        for (int i=0; i < array[0].length; i++){
+            Scanner input = new Scanner(System.in);
+            System.out.println("Enter a integer: ");
+            array[0][i] = input.nextInt();
+        }
+
+        for (int j = 1; j < array.length; j++){
+            for (int k = 0; k < array[0].length; k++){
+                int rd = 0;
+                while (rd < array[j-1][k]){
+                    rd = 1 + (int)(Math.random() * ((10-1)+1));
+                } 
+                array[j][k] = rd;
+            }
+        }
+
+        for (int x=0; x < array.length; x++){
+            for (int y=0; y < array.length; y++){
+                System.out.print(array[x][y] + "\t");
+            }
+            System.out.println("");
+        }
+
+        /* Write a program that calculates the area and circumference of a circle.
+        The program should prompt the user to enter the radius of the circle,
+        and then output the area and circumference. Use a constant value of 3.14159 for pi.*/
+        final float PI = 3.14159F;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter your radius: ");
+        float radius = input.nextFloat();
+        float area = PI * (float)(Math.pow(radius, 2));
+        float circumference = 2 * PI * radius;
+        System.out.println("The area is: " + area  + " u^2 and the circumference length is: " + circumference + " u");
+    
+
+        /* Write a program that calculates the total cost of a meal
+        at a restaurant, including tax and tip. The program should prompt the
+        user to enter the cost of the meal, the tax rate, and the tip percentage.
+        Use constants for the tax rate and the tip percentage. */
+
+        final float tax_rate = .12F;
+        final float tip_percentage = .05F;
+
+        Scanner input = new Scanner(System.in);
+        float meal_cost = input.nextFloat();
+
+        float total_cost = meal_cost * (1+tax_rate+tip_percentage);
+        System.out.println("The total cost is: " + total_cost + " $");
+    }
+
+          /* Michael's father had borrowed $1,000 from the bank and the rate of interest was 5%. 
+      What would the simple interest be if the amount is borrowed for 1 year? Similarly,
+       calculate the simple interest if the amount
+       is borrowed for 2 years, 3 years, and 10 years? Also, calculate the amount
+        that has to be returned in each of these cases. */
+
+      double principal = 1000;
+      final double INTEREST_RATE = .05;
+      int[] year_options = {1,2,3,10};
+
+      for (int i=0; i < year_options.length; i++){
+        int n = year_options[i];
+        System.out.println(n + " years: ");
+        double simple_interest = (principal * INTEREST_RATE * n);
+        double amount = principal + simple_interest; 
+        System.out.println("Final amount of " + amount + "$ by a simple interest of " + simple_interest + "$");
+      }
+
+
+    /* Write a program to calculate the slope of a given line
+     * (given the coordinates of two points on the line)
+     */
+    int[][] points = {{2,4},{8,3}};
+    double slope = (double)(points[1][1] - points[0][1]) / (double)(points[1][0] - points[0][0]);
+    System.out.println("The slope of the line is: " + slope);
+
+    /* Write a program to find the hypotenuse of a right angled triangle given the other two sides */
+    double a = 3;
+    double b = 4;
+    double c = Math.sqrt(Math.pow(a,2) + Math.pow(b,2));
+    System.out.println("The hypotenuse of the right angled triangle is: " + c + " units squared");
+
+    /* Suppose a customer has a shopping cart with a total cost of $100, and there
+     is a discount of 10%. In addition, there is a tax of 5% on the total cost,
+      including the discount. To calculate the final cost */
+
+    double cost = 100;
+    double discount = .10;
+    final double TAX = .05;
+    
+    double final_cost = (cost * (1-discount)) * (1+TAX);
+    System.out.println("The final cost is: " + final_cost + " $");
+
+/* Suppose a course has three assignments worth 20%, 30%, and 50% of the
+     final grade, respectively. A student scores 80%, 90%, and 70% on these assignments,
+      respectively. To calculate the final grade */
+    
+    double[] assigment_worth = {.2,.3,.5};
+    double[] scores = {80, 90, 70};
+
+    double sum = 0;
+
+    for (int i=0; i < assigment_worth.length; i++){
+        sum += scores[i] * assigment_worth[i];
+    }
+
+    System.out.println("The final grade is: " + sum + " %");
+
+   /*Suppose a trapezoid has a height of 10 units and bases of 5 and 8 units. To calculate the area of the trapezoid */
+    double h = 10;
+    double a = 5;
+    double b = 8;
+
+    double area = ((a+b) / 2) * h;
+    System.out.println("The area of the trapezoid is : " + area + " units squared");
